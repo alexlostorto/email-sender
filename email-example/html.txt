@@ -1,0 +1,12 @@
+<html>
+  <body>
+    <p>
+      Dear Github User,<br /><br />
+      If you're reading this, star the repo!
+      Yours faithfully,<br /><br />
+      Alex lo Storto<br /><br />
+      ----------<br /><br />
+      <a href="https://alexlostorto.github.io/">Website</a> | <a href="https://github.com/alexlostorto">Github</a>
+    </p>
+  </body>
+</html>
