@@ -18,7 +18,7 @@ git clone https://github.com/alexlostorto/email-sender
 
 2. Rename _.env.example_ to _.env_ and rename _email-example_ to _email_.
 
-3. Replace the _app_key_ with your Gmail **App Key**.
+3. Replace the _app_key_ with your **Gmail App Key**.
 
 ```env
 APPKEY=app_key
