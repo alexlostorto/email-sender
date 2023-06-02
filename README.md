@@ -6,7 +6,7 @@
 
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/alexlostorto/email-sender?style=for-the-badge&message=Code+Climate&labelColor=222222&logo=Code+Climate&logoColor=FFFFFF)](https://codeclimate.com/github/alexlostorto/email-sender/maintainability)
 
-The program automatically sends emails using **Gmail's SMTP Protocol**.
+The program automatically sends emails using **Gmail's SMTP Server**.
 
 ## ⚡ Quick setup
 
