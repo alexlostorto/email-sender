@@ -1,7 +1,7 @@
 <html>
   <body>
     <p>
-      Dear Github User,<br /><br />
+      Dear [Name],<br /><br />
       If you're reading this, star the repo!
       Yours faithfully,<br /><br />
       Alex lo Storto<br /><br />

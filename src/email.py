@@ -15,20 +15,34 @@ from src.credentials import getCredentials
 directory = os.path.dirname(os.path.abspath(__file__))
 
 
-def getContents(fileName):
-    with open(os.path.join(directory, fileName), "r", encoding="utf8") as file:
-        return file.read()
+def getContents(fileName, singular=True):
+    try:
+        with open(os.path.join(directory, fileName), "r", encoding="utf8") as file:
+            data = file.read().split('\n')
+            if data[-1] == '':
+                del data[-1]
+
+            if len(data) == 1 and singular:
+                return data[0]
+            elif len(data) != 1 and singular:
+                raise ValueError(f"[ERROR] {fileName} should only have one line")
+            elif len(data) >= 1 and not singular:
+                return data
+            else:
+                raise ValueError(f"[ERROR] {fileName} should have at least one line")
+    except FileNotFoundError:
+        print(f"[ERROR] No {fileName} file found")
 
 
 class Email():
     def __init__(self):
         self.password = getCredentials()
-        self.subject = getContents('../email/subject.txt')
-        self.sender = getContents('../email/from.txt')
-        self.to = [i.split(',') for i in getContents('../email/to.txt').split('\n')]
-        self.bcc = getContents('../email/bcc.txt')
-        self.text = getContents('../email/text.txt')
-        self.html = getContents('../email/html.txt')
+        self.subject = getContents('../email/subject.txt', True)
+        self.sender = getContents('../email/from.txt', True)
+        self.to = [i.split(',') for i in getContents('../email/to.txt', False)]
+        self.bcc = getContents('../email/bcc.txt', True)
+        self.text = '\n'.join(getContents('../email/text.txt', False))
+        self.html = '\n'.join(getContents('../email/html.txt', False))
         self.message = None
         self.counter = 0
 
@@ -70,4 +84,4 @@ class Email():
             smtp.login(self.sender, self.password)
             smtp.send_message(self.message)
             self.counter += 1
-            print(f"Sent email {self.counter} to {self.message['To']}")
+            print(f"[LOG] Sent email {self.counter} to {self.message['To']}")
